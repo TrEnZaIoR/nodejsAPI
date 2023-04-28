@@ -75,7 +75,7 @@ exports.putId = (req, res) => {
 exports.delId = (req, res) => {
     const id = req.params.id
 
-    db.query("DELETE FROM `mezgorod` WHERE `mezgorods`.`id` = '" + req.params.id + "'", (error, rows, results) => {
+    db.query("DELETE FROM `mezgorods` WHERE `mezgorods`.`id` = '" + req.params.id + "'", (error, rows, results) => {
         if(error) {
             response.status(400, error, res)
         } else {
