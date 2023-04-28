@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Пригородные</title>
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+    <link href="/static/assets/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Касса</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li ><a href="/">Главная</a></li>
+          <li ><a href="/about">О нас</a></li>
+          <li ><a href="/work">Контакты</a></li>
+          <li class="active"><a href="/prigorod">Расписание пригород</a></li>
+          <li ><a href="/mezgorod">Расписание дальнего следования</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+    
+
+<section id="works"></section>
+	<div class="container">
+		<div class="row centered mt mb">
+    <h1>Редактирование пригородного маршрута</h1>
+     <form action="/prigorodedit" method="POST">
+        <input type="hidden" name="id" value="{{prigorod.id}}" />
+
+        <label for="p_o" class="form-label">Из</label><br>
+        <input name="p_o" type="text" id="p_o" value="{{prigorod.p_o}}" class="form-control"  class="field" /><br><br>
+
+        <label for="p_p" class="form-label">В</label><br>
+        <input name="p_p" type="text" id="p_p" value="{{prigorod.p_p}}" class="form-control" class="field" /><br><br>
+
+        <label for="time_o" class="form-label">Время отправления</label><br>
+        <input name="time_o" type="text" id="time_o" value="{{prigorod.time_o}}" class="form-control" class="field" /><br><br>
+
+        <label for="time_p" class="form-label">Время прибытия</label><br>
+        <input name="time_p" type="text" id="time_p" value="{{prigorod.time_p}}" class="form-control" class="field" /><br><br>
+        
+        <label for="count_m" class="form-label">Кол-во мест</label><br>
+        <input name="count_m" type="text" id="count_m" value="{{prigorod.count_m}}" class="form-control" class="field" /><br><br>
+
+        <label for="count_mo" class="form-label">Кол-во оставшихся</label><br>
+        <input name="count_mo" type="text" id="count_mo" value="{{prigorod.count_mo}}" class="form-control" class="field" /><br><br>
+
+        <label for="price" class="form-label">Цена</label><br>
+        <input name="price" type="number" id="price"  value="{{prigorod.price}}" class="form-control" class="field" /><br><br>
+
+        <label for="name_vod" class="form-label">Имя водителя</label><br>
+        <input name="name_vod" type="text" id="name_vod" value="{{prigorod.name_vod}}" class="form-control" class="field" /><br><br>
+
+        <label for="gos_nomer" class="form-label">Гос номер</label><br>
+        <input name="gos_nomer" type="text" id="gos_nomer"  value="{{prigorod.gos_nomer}}" class="form-control" class="field" /><br><br>
+
+
+        <button type="submit" class="btn btn-success">Отправить</button>
+     </form>
+     <a href="/prigorod">Назад</a>
+
+		</div><!--/row -->
+	</div><!--/container -->
+
+    <div id="social">
+    <div class="container">
+        <div class="row centered">
+            
+            <div class="col-lg-2">
+                <a href="https://emdigital.ru/instagram?account=avtovokzal_nsk"><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="col-lg-2">
+                <a href="https://t.me/avtovokzal_on_line"><i class="fa fa-tumblr"></i></a>
+            </div>
+        
+        </div><!--/row -->
+    </div><!--/container -->
+</div><!--/social -->
+
+<div id="footerwrap">
+    <div class="container">
+        <div class="row centered">
+            <div class="col-lg-4">
+                <p><b>КАССА АВТОВОКЗАЛА</b></p>
+            </div>
+        
+            <div class="col-lg-4">
+                <p>Мы расположены в Ангарске</p>
+            </div>
+            <div class="col-lg-4">
+                <p>TrEnZaIoR@mail.ru</p>
+            </div>
+        </div>
+    </div>
+</div><!--/footerwrap -->
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the ptime_ps load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/assets/js/bootstrap.min.js"></script>
+</body>
+<html>
