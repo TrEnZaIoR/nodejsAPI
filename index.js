@@ -36,17 +36,17 @@ app.get('/about', (req, res) => {
 
 const db = mysql2.createPool({
   connectionLimit: 5,
-  host: "localhost",
-  user: "root",
-  database: "avtokassa",
-  password: ""
+  host: "MYSQL8003.site4now.net",
+  user: "a97a7f_aulenze",
+  database: "db_a97a7f_aulenze",
+  password: "1520092013AAGg"
 });
 const urlencodedParser = express.urlencoded({extended: false});
 
     
 // получение списка пользователей
     app.get("/prigorod", function(req, res){
-        db.query("SELECT * FROM prigorod", function(err, data) {
+        db.query("SELECT * FROM prigorods", function(err, data) {
           if(err) return console.log(err);
           res.render("prigorod.hbs", {
               prigorod: data
@@ -72,7 +72,7 @@ app.post("/prigorodcreate", urlencodedParser, function (req, res) {
     const price = req.body.price;
     const name_vod = req.body.name_vod;
     const gos_nomer = req.body.gos_nomer;
-    db.query("INSERT INTO prigorod (p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer) VALUES (?,?,?,?,?,?,?,?,?)", [p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer], function(err, data) {
+    db.query("INSERT INTO prigorods (p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer) VALUES (?,?,?,?,?,?,?,?,?)", [p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer], function(err, data) {
      if(err) return console.log(err);
     res.redirect("/prigorod");
     });
@@ -81,7 +81,7 @@ app.post("/prigorodcreate", urlencodedParser, function (req, res) {
 // получем id редактируемого пользователя, получаем его из бд и отправлям с формой редактирования
 app.get("/prigorodedit/:id", function(req, res){
   const id = req.params.id;
-  db.query("SELECT * FROM prigorod WHERE id=?", [id], function(err, data) {
+  db.query("SELECT * FROM prigorods WHERE id=?", [id], function(err, data) {
     if(err) return console.log(err);
      res.render("prigorodedit.hbs", {
         prigorod: data[0]
@@ -91,7 +91,7 @@ app.get("/prigorodedit/:id", function(req, res){
 // получем id просмотра пользователя
 app.get("/prigorodshow/:id", function(req, res){
   const id = req.params.id;
-  db.query("SELECT * FROM prigorod WHERE id=?", [id], function(err, data) {
+  db.query("SELECT * FROM prigorods WHERE id=?", [id], function(err, data) {
     if(err) return console.log(err);
      res.render("prigorodshow.hbs", {
         prigorod: data[0]
@@ -115,7 +115,7 @@ app.post("/prigorodedit", urlencodedParser, function (req, res) {
   
   const id = req.body.id;
   
-  db.query("UPDATE prigorod SET p_o=?, p_p=?, time_o=?, time_p=?, count_m=?, count_mo=?, price=?, name_vod=?, gos_nomer=? WHERE id=?", [ p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer, id], function(err, data) {
+  db.query("UPDATE prigorods SET p_o=?, p_p=?, time_o=?, time_p=?, count_m=?, count_mo=?, price=?, name_vod=?, gos_nomer=? WHERE id=?", [ p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer, id], function(err, data) {
     if(err) return console.log(err);
     res.redirect("/prigorod");
   });
@@ -125,7 +125,7 @@ app.post("/prigorodedit", urlencodedParser, function (req, res) {
 app.post("/delete/:id", function(req, res){
           
   const id = req.params.id;
-  db.query("DELETE FROM prigorod WHERE id=?", [id], function(err, data) {
+  db.query("DELETE FROM prigorods WHERE id=?", [id], function(err, data) {
     if(err) return console.log(err);
     res.redirect("/prigorod");
   });
@@ -135,7 +135,7 @@ app.post("/delete/:id", function(req, res){
 
 // получение списка пользователей
 app.get("/mezgorod", function(req, res){
-  db.query("SELECT * FROM mezgorod", function(err, data) {
+  db.query("SELECT * FROM mezgorods", function(err, data) {
     if(err) return console.log(err);
     res.render("mezgorod.hbs", {
         mezgorod: data
@@ -161,7 +161,7 @@ const count_mo = req.body.count_mo;
 const price = req.body.price;
 const name_vod = req.body.name_vod;
 const gos_nomer = req.body.gos_nomer;
-db.query("INSERT INTO mezgorod (p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer) VALUES (?,?,?,?,?,?,?,?,?)", [p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer], function(err, data) {
+db.query("INSERT INTO mezgorods (p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer) VALUES (?,?,?,?,?,?,?,?,?)", [p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer], function(err, data) {
 if(err) return console.log(err);
 res.redirect("/mezgorod");
 });
@@ -170,7 +170,7 @@ res.redirect("/mezgorod");
 // получем id редактируемого пользователя, получаем его из бд и отправлям с формой редактирования
 app.get("/mezgorodedit/:id", function(req, res){
 const id = req.params.id;
-db.query("SELECT * FROM mezgorod WHERE id=?", [id], function(err, data) {
+db.query("SELECT * FROM mezgorods WHERE id=?", [id], function(err, data) {
 if(err) return console.log(err);
 res.render("mezgorodedit.hbs", {
   mezgorod: data[0]
@@ -180,7 +180,7 @@ res.render("mezgorodedit.hbs", {
 // получем id просмотра пользователя
 app.get("/mezgorodshow/:id", function(req, res){
   const id = req.params.id;
-  db.query("SELECT * FROM mezgorod WHERE id=?", [id], function(err, data) {
+  db.query("SELECT * FROM mezgorods WHERE id=?", [id], function(err, data) {
     if(err) return console.log(err);
      res.render("mezgorodshow.hbs", {
         mezgorod: data[0]
@@ -204,7 +204,7 @@ const gos_nomer = req.body.gos_nomer;
 
 const id = req.body.id;
 
-db.query("UPDATE mezgorod SET p_o=?, p_p=?, time_o=?, time_p=?, count_m=?, count_mo=?, price=?, name_vod=?, gos_nomer=? WHERE id=?", [ p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer, id], function(err, data) {
+db.query("UPDATE mezgorods SET p_o=?, p_p=?, time_o=?, time_p=?, count_m=?, count_mo=?, price=?, name_vod=?, gos_nomer=? WHERE id=?", [ p_o, p_p, time_o, time_p, count_m, count_mo, price, name_vod, gos_nomer, id], function(err, data) {
 if(err) return console.log(err);
 res.redirect("/mezgorod");
 });
@@ -214,7 +214,7 @@ res.redirect("/mezgorod");
 app.post("/delete1/:id", function(req, res){
     
 const id = req.params.id;
-db.query("DELETE FROM mezgorod WHERE id=?", [id], function(err, data) {
+db.query("DELETE FROM mezgorods WHERE id=?", [id], function(err, data) {
 if(err) return console.log(err);
 res.redirect("/mezgorod");
 });
