@@ -6,7 +6,7 @@ const db = require('../settings/db')
 
 exports.getAllPrigorod = (req, res) => {
 
-    db.query('SELECT * FROM `prigorod`', (error, rows, fields) => {
+    db.query('SELECT * FROM `prigorods`', (error, rows, fields) => {
         if(error) {
             response.status(400, error, res)
         } else {
@@ -26,7 +26,7 @@ exports.postPrigorod = (req, res) => {
     const name_vod = req.body.name_vod;
     const gos_nomer = req.body.gos_nomer;
 
-    db.query("INSERT INTO `prigorod`(`id`, `p_o`, `p_p`, `time_o`, `time_p`, `count_m`, `count_mo`, `price`, `name_vod`, `gos_nomer`) VALUES(NULL, '" + p_o + "', '" + p_p + "', '" + time_o + "', '" + time_p + "', '" + count_m + "', '" + count_mo + "', '" + price + "', '" + name_vod + "', '" + gos_nomer + "')", (error, rows, results) => {
+    db.query("INSERT INTO `prigorods`(`id`, `p_o`, `p_p`, `time_o`, `time_p`, `count_m`, `count_mo`, `price`, `name_vod`, `gos_nomer`) VALUES(NULL, '" + p_o + "', '" + p_p + "', '" + time_o + "', '" + time_p + "', '" + count_m + "', '" + count_mo + "', '" + price + "', '" + name_vod + "', '" + gos_nomer + "')", (error, rows, results) => {
         if(error) {
             response.status(400, error, res)
         } else {
@@ -40,7 +40,7 @@ exports.postPrigorod = (req, res) => {
 exports.getId = (req, res) => {
     const id = req.params.id
 
-    db.query("SELECT * FROM `prigorod` WHERE `id` = '" + req.params.id + "'", (error, rows, results) => {
+    db.query("SELECT * FROM `prigorods` WHERE `id` = '" + req.params.id + "'", (error, rows, results) => {
         if(error) {
             response.status(400, error, res)
         } else {
@@ -62,7 +62,7 @@ exports.putId = (req, res) => {
     const name_vod = req.body.name_vod
     const gos_nomer = req.body.gos_nomer
 
-    db.query("UPDATE`prigorod` SET `p_o`='" + p_o + "', `p_p`='" + p_p + "', `time_o`='" + time_o + "', `time_p`='" + time_p + "', `count_m`='" + count_m + "', `count_mo`= '" + count_mo + "', `price`='" + price + "', `name_vod`='" + name_vod + "', `gos_nomer`='" + gos_nomer + "' WHERE `prigorod`.`id`='" + req.params.id + "'", (error, rows, results) => {
+    db.query("UPDATE`prigorods` SET `p_o`='" + p_o + "', `p_p`='" + p_p + "', `time_o`='" + time_o + "', `time_p`='" + time_p + "', `count_m`='" + count_m + "', `count_mo`= '" + count_mo + "', `price`='" + price + "', `name_vod`='" + name_vod + "', `gos_nomer`='" + gos_nomer + "' WHERE `prigorods`.`id`='" + req.params.id + "'", (error, rows, results) => {
         if(error) {
             response.status(400, error, res)
         } else {
@@ -75,7 +75,7 @@ exports.putId = (req, res) => {
 exports.delId = (req, res) => {
     const id = req.params.id
 
-    db.query("DELETE FROM `prigorod` WHERE `prigorod`.`id` = '" + req.params.id + "'", (error, rows, results) => {
+    db.query("DELETE FROM `prigorods` WHERE `prigorods`.`id` = '" + req.params.id + "'", (error, rows, results) => {
         if(error) {
             response.status(400, error, res)
         } else {
